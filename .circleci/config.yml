@@ -20,10 +20,4 @@ jobs:
     executor: build
     steps:
       - checkout
-      - run: |
-          bazel build \
-            --host_jvm_args=-Xmx1g \
-            --discard_analysis_cache  \
-            --notrack_incremental_state \
-            --nokeep_state_after_build \
-            //source/exe:envoy
+      - run: bazel build //source/exe:envoy
