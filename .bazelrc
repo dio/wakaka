@@ -9,9 +9,9 @@
 # The number 2G is choosed heuristically to both support in CircleCI and large enough for RBE.
 # Startup options cannot be selected via config.
 startup --host_jvm_args=-Xmx1g
-startup --discard_analysis_cache
-startup --notrack_incremental_state
-startup --nokeep_state_after_build
+build --discard_analysis_cache
+build --notrack_incremental_state
+build --nokeep_state_after_build
 
 build --workspace_status_command=bazel/get_workspace_status
 build --experimental_remap_main_repo
