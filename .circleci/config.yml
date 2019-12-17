@@ -2,7 +2,7 @@ version: 2.1
 
 workflows:
   version: 2
-  build_and_publish:
+  build:
     jobs:
       - build:
           filters:
@@ -20,4 +20,10 @@ jobs:
     executor: build
     steps:
       - checkout
-      - run: bazel build //source/exe:envoy
+      - run: |
+          bazel build \
+            --host_jvm_args=-Xmx1g \
+            --discard_analysis_cache  \
+            --notrack_incremental_state \
+            --nokeep_state_after_build \
+            //source/exe:envoy
