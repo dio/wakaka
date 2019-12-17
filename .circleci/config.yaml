@@ -5,20 +5,16 @@ workflows:
   build:
     jobs:
       - build:
-          filters:
-            tags:
-              only: /.*/
 
 executors:
   builder:
     docker:
       - image: envoyproxy/envoy-build:cb15cc3d2010aff77d6e022ddf6d723fa8becbc0
-
     working_directory: ~/envoy
 
 jobs:
   build:
     executor: builder
-  steps:
-    - checkout
-    - run: bazel build //source/exe:envoy
+    steps:
+      - checkout
+      - run: bazel build //source/exe:envoy
